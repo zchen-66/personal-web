@@ -1,0 +1,90 @@
+:root {
+  --background-gray: #ebebeb;
+  --title-black: #131313;
+}
+
+header {
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--background-gray);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "Source Code Pro", serif;
+  color: var(--title-black);
+}
+
+header h1 {
+  font-size: 8vw;
+  border-right: 1vw solid transparent;
+}
+
+header h1.load-typing-animation {
+  border-right: 1vw solid var(--title-black);
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  animation:
+    typing 3s steps(14),
+    cursor 0.4s step-end infinite alternate;
+}
+
+header h2 {
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  font-size: 1.5vw;
+  white-space: nowrap;
+  opacity: 0;
+}
+
+header h2.load-fade-in-animation {
+  animation: fade-and-fly-in 2s forwards;
+}
+
+@keyframes fade-and-fly-in {
+  0% {
+    opacity: 0;
+    transform: translate(0, 35%);
+  }
+
+  100% {
+    opacity: 0.5;
+    transform: translate(0, 0);
+  }
+}
+
+header h2 img {
+  width: 1em;
+}
+
+header h2 img.left-down-arrow {
+  margin-right: 2%;
+}
+
+header h2 img.right-down-arrow {
+  margin-left: 2%;
+}
+
+/* Credit: https://www.youtube.com/watch?v=yefgBA1CecI */
+@keyframes cursor {
+  50% { border-color: transparent }
+}
+
+@keyframes typing {
+  from { width: 0 }
+}
+
+.no-overflow {
+  overflow: hidden;
+}
+
+main {
+  height: 100vh;
+}
+
+body {
+  margin: 0;
+}
