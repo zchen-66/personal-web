@@ -2,18 +2,63 @@
 (function() {
 
 	window.addEventListener("load", init);
+
 	/**
    * Initialization function that runs when the window is loaded. Adds event listeners and calls
    * other basic set-up functions to ensure functionality.
    */
 	function init() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // window.scrollTo({ top: 0, behavior: 'smooth' });
+    // qs("body").classList.add("no-overflow");
     setTimeout(() => {
-      qs("header h1").classList.remove("load-typing-animation");
       qs("header h2").classList.add("load-fade-in-animation");
       qs("body").classList.remove("no-overflow");
     }, 3500)
+
+    const observer = new IntersectionObserver ((entries) => {
+      entries.forEach((entry) => {
+        let elId = entry.target.id;
+        if (entry.isIntersecting) {
+          if(elId === "relevant-section-title") {
+            letterScrambler(entry.target);
+          } else if (elId === "relevant-section") {
+            qs("nav").classList.add("expanded-nav");
+          }
+        } else {
+          if(elId === "relevant-section-title") {
+            letterScrambler(entry.target);
+          } else if (elId === "relevant-section") {
+            qs("nav").classList.remove("expanded-nav");
+          }
+        }
+      });
+    });
+
+    qsa(".observed").forEach(el => {
+      observer.observe(el);
+    })
 	}
+
+  function letterScrambler(element) {
+    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      let iter = 0;
+      const interval = setInterval(() => {
+        element.innerText = element.innerText.split("")
+        .map((letter, index) => {
+          if (index < iter) {
+            return element.dataset.value[index];
+          } else if (element.dataset.value[index] === " ") {
+            return " ";
+          }
+          return letters[Math.floor(Math.random() * 26)];
+        }).join("");
+      if (iter >= element.dataset.value.length) {
+        clearInterval(interval);
+      }
+      iter += 1/6;
+    }, 30);
+  }
+
 	/**
    * shortcut for getElementById
    * @param {string} id - ID of the element to be accessed

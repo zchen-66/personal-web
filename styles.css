@@ -1,6 +1,8 @@
 :root {
   --background-gray: #ebebeb;
   --title-black: #131313;
+  --nav-width: 100vw;
+  --nav-height: 10vh;
 }
 
 header {
@@ -18,11 +20,11 @@ header {
 
 header h1 {
   font-size: 8vw;
-  border-right: 1vw solid transparent;
+  border-right: 0.5vw solid transparent;
 }
 
 header h1.load-typing-animation {
-  border-right: 1vw solid var(--title-black);
+  border-right: 0.4vw solid var(--title-black);
   width: 100%;
   white-space: nowrap;
   overflow: hidden;
@@ -83,6 +85,107 @@ header h2 img.right-down-arrow {
 
 main {
   height: 100vh;
+  width: 95vw;
+  margin: auto;
+}
+
+nav {
+  position: fixed;
+  width: 0;
+  height: var(--nav-height);
+  opacity: 1;
+  background-color: rgba(255, 255, 255, 0.8);
+  transition: width 1s ease-in-out;
+  top: 0;
+  left: 0;
+  font-family: "Source Code Pro", serif;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+nav.expanded-nav {
+  width: var(--nav-width);
+}
+
+nav > *{
+  opacity: 0;
+  transition-duration: 0.75s;
+  transition-delay: 0ms;
+}
+
+nav.expanded-nav > * {
+  opacity: 1;
+  transition: opacity 1s ease-in-out 0.5s;
+}
+
+.logo-style {
+  margin-left: 1vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-style h1 {
+  margin: 5px 0;
+  font-size: 2vw;
+}
+
+.logo-style h3 {
+  font-family: "Quattrocento Sans", sans-serif;
+  margin: 0;
+  font-size: 1vw;
+  margin: 2px 0;
+}
+
+.tabs-style {
+  display: flex;
+  align-items: center;
+  height: calc(var(--nav-height) * 0.35);
+  width: calc(var(--nav-width) * 0.4);
+  margin: 0 5%;
+}
+
+.tabs-style a {
+  width: 1/3;
+  height: 100%;
+  color: var(--title-black);
+  font-weight: 100;
+  box-sizing: border-box;
+  padding: 0 15px;
+  text-align: center;
+  border-right: 1px rgb(190, 190, 190) solid;
+  font-size: 20pt;
+  font-family: "PT Sans Narrow", sans-serif;
+  display: flex;
+  align-items: center;
+}
+
+.tabs-style .about-tab {
+  border-left: 1px solid rgb(190, 190, 190);
+}
+
+.links-style {
+  position: absolute;
+  right: 2vw;
+  white-space: nowrap;
+}
+
+.links-style img {
+  width: 40px;
+  object-fit: contain;
+  margin: 0 2%;
+}
+
+.relevant-section-style {
+  margin-top: 5%;
+}
+
+.relevant-section-style h1 {
+  font-family: "Source Code Pro", serif;
+  color: var(--title-black);
 }
 
 body {
