@@ -8,36 +8,73 @@
    * other basic set-up functions to ensure functionality.
    */
 	function init() {
-    // window.scrollTo({ top: 0, behavior: 'smooth' });
-    // qs("body").classList.add("no-overflow");
-    setTimeout(() => {
-      qs("header h2").classList.add("load-fade-in-animation");
-      qs("body").classList.remove("no-overflow");
-    }, 3500)
+    handleReload();
+    cycleCatchphrase();
 
     const observer = new IntersectionObserver ((entries) => {
-      entries.forEach((entry) => {
-        let elId = entry.target.id;
-        if (entry.isIntersecting) {
-          if(elId === "relevant-section-title") {
-            letterScrambler(entry.target);
-          } else if (elId === "relevant-section") {
-            qs("nav").classList.add("expanded-nav");
-          }
-        } else {
-          if(elId === "relevant-section-title") {
-            letterScrambler(entry.target);
-          } else if (elId === "relevant-section") {
-            qs("nav").classList.remove("expanded-nav");
-          }
-        }
-      });
+      handleObserverEntries(entries);
     });
 
     qsa(".observed").forEach(el => {
       observer.observe(el);
     })
+
+    id("expand-vertical-nav").addEventListener("click", () => {
+      qs("nav .vertical-nav").style.display = "flex";
+    })
+
+    id("collapse-vertical-nav").addEventListener("click", () => {
+      qs("nav .vertical-nav").style.display = "none";
+    })
+
+    qsa("#relevant-section article").forEach(art => {
+      console.log(art);
+    })
 	}
+
+  function cycleCatchphrase() {
+    const catchphrases = ['Part-Time Notion Nerd', 'Gamer.', 'Technically Zitong'];
+    const el = qs("#catchphrase h3");
+    const r = document.querySelector(':root');
+    let index = 0;
+
+    setInterval(() => {
+      let catchphrase = catchphrases[index];
+      r.style.setProperty('--catchphrase-steps', catchphrase.length);
+      el.textContent = catchphrase;
+      index += 1;
+      if (index === catchphrases.length) {
+        index = 0;
+      }
+    }, 3000);
+  }
+
+  function handleReload() {
+    // qs(".scroll-container").classList.add("no-overflow");
+    setTimeout(() => {
+      qs("header h2").classList.add("load-fade-in-animation");
+      qs(".scroll-container").classList.remove("no-overflow");
+    }, 3500)
+  }
+
+  function handleObserverEntries(entries) {
+    entries.forEach((entry) => {
+      let elId = entry.target.id;
+      if (entry.isIntersecting) {
+        if(elId === "relevant-section-title") {
+          letterScrambler(entry.target);
+        } else if (elId === "relevant-section") {
+          qs("nav").classList.add("expanded-nav");
+        }
+      } else {
+        if(elId === "relevant-section-title") {
+          letterScrambler(entry.target);
+        } else if (elId === "relevant-section") {
+          qs("nav").classList.remove("expanded-nav");
+        }
+      }
+    });
+  }
 
   function letterScrambler(element) {
     const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
