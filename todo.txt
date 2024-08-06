@@ -1,0 +1,4 @@
+- make splash mobile friendly
+- splash load no scroll
+- good part article template
+- good part extract from json file
