@@ -6,8 +6,8 @@ export default function Accomplishment({ displayInfo }) {
   let dateRange = "JAN 20XX - DEC 20XX";
   let title = "Project";
   let description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
+  let imgPath = placeholder
   if (displayInfo) {
-    console.log(displayInfo.end);
     if (displayInfo.end) {
       dateRange = displayInfo.start + " - " + displayInfo.end;
     } else {
@@ -15,6 +15,7 @@ export default function Accomplishment({ displayInfo }) {
     }
     title = displayInfo.title;
     description = displayInfo.description;
+    imgPath = displayInfo.imgPath;
   }
 
   return (
@@ -22,7 +23,7 @@ export default function Accomplishment({ displayInfo }) {
       <h2 className="text-2xl font-PTSansNarrow mt-12">{dateRange}</h2>
       <h1 className="text-6xl font-NotoSerif font-light my-5">{title}</h1>
       <p className="text-2xl font-content">{description}</p>
-      <img src={placeholder} />
+      <img className="my-5" src={imgPath} />
     </article>
   )
 }

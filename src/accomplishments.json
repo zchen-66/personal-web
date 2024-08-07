@@ -4,7 +4,7 @@
       "title": "TimeSync",
       "start": "OCT 2023",
       "end": "Present",
-      "imgPath": "./img/placeholder.jpg",
+      "imgPath": "/timesync.png",
       "imgLink": "https://timesync-7171d.web.app/",
       "imgAlt": "timesync project screenshot",
       "description": "Team-based webapp project aimed for schedule compatibility solutions through syncing multi-user calendar-based applications. Lead front-end and UI/UX engineer."
@@ -13,7 +13,7 @@
       "title": "Stock Price Predictions",
       "start": "APR 2024",
       "end": "JUN 2024",
-      "imgPath": "",
+      "imgPath": "/stonks.png",
       "imgLink": "",
       "imgAlt": "",
       "description": "Predicting stock and option pricing with data-driven models such as MLE with GBM, PCA, and Neural Network."
@@ -22,7 +22,7 @@
       "title": "AMATH Acceptance",
       "start": "APR 2024",
       "end": "",
-      "imgPath": "",
+      "imgPath": "/amath-stats.png",
       "imgLink": "",
       "imgAlt": "",
       "description": "I got accepted into the Applied Mathematics major at the University of Washington! Dream major for me, and very glad to have the opportunity to study what I love."

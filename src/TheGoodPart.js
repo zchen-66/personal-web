@@ -4,12 +4,14 @@ import useWindowDimensions from './useWindowDimensions'
 import letterScrambler from './letterScrambler'
 import Accomplishment from './Accomplishment'
 import accomplishments from "./accomplishments.json"
+import { useGoodPartInViewContext } from './goodPartInViewContext';
 
 export default function TheGoodPart() {
 
   const sectionWidth = 400;
   const headingRef = useRef(null);
-  const isInView = useInView(headingRef, { once: true });
+  const { setIsGoodPartInView } = useGoodPartInViewContext();
+  const isInViewLocal = useInView(headingRef, { once: true });
   const { height, width } = useWindowDimensions();
   // https://www.youtube.com/watch?v=hjbxaYTMhy0&ab_channel=TomIsLoading
 
@@ -19,11 +21,12 @@ export default function TheGoodPart() {
 
   // scramble letter effect
   useEffect(() => {
-    if (isInView) {
+    if (isInViewLocal) {
       let element = headingRef.current;
       letterScrambler(element);
+      setIsGoodPartInView(true);
     }
-  }, [isInView])
+  }, [isInViewLocal])
 
   // Extract accomplishment info from json file
   let [info] = useState(accomplishments);
@@ -48,12 +51,13 @@ export default function TheGoodPart() {
 
   return (
     <div className="h-full bg-white flex flex-col items-center">
-      <h1 className="text-5xl font-title font-bold pt-[3rem] text-center underline">
+      <h1 id="the-good-part" className="text-4xl med:text-5xl big:text-5xl font-title font-bold pt-[3rem] text-center underline">
         <a data-value="THE GOOD PART" ref={headingRef} href="https://open.spotify.com/track/44B9xspO3RycWjEJ3D8cKl?si=d9fcc131d63049a3" target="_blank">
           THE GOOD PART
         </a>
       </h1>
-      <div id="tgpSection" className="w-[95%] pt-[2rem] flex justify-between">
+      <h2 className="text-xl font-content text-neutral-500 mt-4">pls hire me #OpenToWork</h2>
+      <div id="goodPartSection" className="w-[95%] pt-[2rem] flex justify-between">
         {sectionMappingArray.map((index) => (
           <section className="smol:w-[100%] med:w-[48%] big:w-[31%]" key={index} id={`section${index}`}>
             {countingArr.map((count => (
