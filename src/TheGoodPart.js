@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useInView } from 'framer-motion'
-import useWindowDimensions from './useWindowDimensions'
-import letterScrambler from './letterScrambler'
+import useWindowDimensions from './function components/useWindowDimensions'
+import letterScrambler from './function components/letterScrambler'
 import Accomplishment from './Accomplishment'
 import accomplishments from "./accomplishments.json"
-import { useGoodPartInViewContext } from './goodPartInViewContext';
+import { useGoodPartInViewContext } from './function components/goodPartInViewContext';
 
 export default function TheGoodPart() {
 

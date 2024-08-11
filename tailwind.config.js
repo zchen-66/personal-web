@@ -8,6 +8,7 @@ module.exports = {
       colors: {
         "heading-primary": '#131313',
         "bg-primary": "#ebebeb",
+        "bg-secondary": "#e4ede8"
       },
       fontFamily: {
         title: ["Source Code Pro"],
@@ -20,6 +21,16 @@ module.exports = {
         'med': '800px',
         'big': '1200px',
       },
+      animation: {
+        'infinite-scroll-l': 'infinite-scroll 10s linear infinite',
+        'infinite-scroll-r': 'infinite-scroll 15s linear infinite reverse',
+      },
+      keyframes: {
+        'infinite-scroll': {
+          from: { transform: 'translateX(0)' },
+          to: { transform: 'translateX(-100%)' },
+        },
+      }
     },
   },
   plugins: [],

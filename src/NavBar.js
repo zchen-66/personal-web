@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import VerticalNav from './VerticalNav'
-import { useGoodPartInViewContext } from './goodPartInViewContext';
+import { useGoodPartInViewContext } from './function components/goodPartInViewContext';
 import { useTypewriter, Cursor } from "react-simple-typewriter";
 
 export default function NavBar() {

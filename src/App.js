@@ -3,23 +3,29 @@ import { ParallaxProvider, Parallax } from 'react-scroll-parallax'; // https://r
 import NavBar from "./NavBar.js";
 import Splash from "./Splash.js";
 import TheGoodPart from "./TheGoodPart";
-import { GoodPartInViewProvider } from './goodPartInViewContext';
+import { GoodPartInViewProvider } from './function components/goodPartInViewContext.js';
+import HowDidWeGetHere from './HowDidWeGetHere.js';
+import LetTheGamesBegin from './LetTheGamesBegin.js';
 
 function App() {
 
   return (
     <>
-      <ParallaxProvider>
         <GoodPartInViewProvider>
           <NavBar />
-          <Parallax speed={-80}>
+          <Parallax speed={-100}>
             <Splash />
           </Parallax>
-          <Parallax speed={0}>
+          <div className="relative z-[1]">
             <TheGoodPart />
-          </Parallax>
+          </div>
+          {/* <Parallax speed={-80}> */}
+            <HowDidWeGetHere />
+          {/* </Parallax> */}
+          <div className="relative z-[1]">
+            <LetTheGamesBegin />
+          </div>
         </GoodPartInViewProvider>
-      </ParallaxProvider>
     </>
   );
 }
